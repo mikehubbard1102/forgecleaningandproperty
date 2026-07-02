@@ -1,0 +1,14 @@
+{
+  "name": "forgecleaningandproperty",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing website for Forge Cleaning & Property Services (Jacksonville, FL)",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}
