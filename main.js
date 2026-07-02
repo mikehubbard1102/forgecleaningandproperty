@@ -76,6 +76,25 @@
     });
   });
 
+  /* ---- touch devices: tap a service card to reveal its "Request a Quote" button ---- */
+  if (window.matchMedia && window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+    var svcCards = document.querySelectorAll(".service-card:not(.service-card--cta)");
+    svcCards.forEach(function (card) {
+      card.addEventListener("click", function (e) {
+        if (e.target.closest(".card-cta")) return; // let the button link work
+        var isOpen = card.classList.contains("revealed");
+        svcCards.forEach(function (c) { c.classList.remove("revealed"); });
+        if (!isOpen) card.classList.add("revealed");
+      });
+    });
+    // tapping elsewhere collapses any revealed card
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".service-card")) {
+        svcCards.forEach(function (c) { c.classList.remove("revealed"); });
+      }
+    });
+  }
+
   /* ---- quote form submission ---- */
   var form = document.getElementById("quote-form");
   if (!form) return;

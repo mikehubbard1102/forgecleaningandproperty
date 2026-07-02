@@ -350,10 +350,8 @@ img, svg { max-width: 100%; }
 .service-card:focus-within .card-cta { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .card-cta:focus-visible { opacity: 1; transform: translateY(0); pointer-events: auto; outline: 3px solid rgba(228,199,126,.6); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .card-cta { transition: opacity .2s ease; transform: none; } }
-/* touch/no-hover devices: always show the button so it's reachable */
-@media (hover: none) {
-  .card-cta { opacity: 1; transform: none; pointer-events: auto; }
-}
+/* touch devices: hidden by default, revealed when the card is tapped (JS adds .revealed) */
+.service-card.revealed .card-cta { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
 .service-card--cta {
   background: linear-gradient(160deg, var(--surface-2), var(--surface));
