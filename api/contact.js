@@ -101,7 +101,12 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error("Resend error:", error);
-      return res.status(502).json({ error: "We couldn't send your request just now. Please call (904) 469-7439." });
+      const payload = { error: "We couldn't send your request just now. Please call (904) 469-7439." };
+      // Diagnostics: append ?debug=1 to the request to surface the exact Resend error.
+      if (req.query && (req.query.debug === "1" || req.query.debug === "true")) {
+        payload.detail = { name: error.name, message: error.message, statusCode: error.statusCode };
+      }
+      return res.status(502).json(payload);
     }
 
     return res.status(200).json({ ok: true });
