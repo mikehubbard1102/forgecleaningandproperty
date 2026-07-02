@@ -321,7 +321,7 @@ img, svg { max-width: 100%; }
   background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright));
   transform: scaleX(0); transform-origin: left; transition: transform .28s var(--ease);
 }
-.service-card:hover { transform: translateY(-4px); border-color: var(--border-2); box-shadow: var(--shadow-card), 0 26px 50px -20px rgba(0,0,0,.8); }
+.service-card:hover { transform: translateY(-8px); border-color: var(--border-2); box-shadow: var(--shadow-card), 0 34px 60px -22px rgba(0,0,0,.85); }
 .service-card:hover::before { transform: scaleX(1); }
 .svc-ico {
   display: inline-flex; align-items: center; justify-content: center;
@@ -332,6 +332,28 @@ img, svg { max-width: 100%; }
 .svc-ico svg { width: 26px; height: 26px; }
 .service-card h4 { margin-bottom: .4rem; color: var(--text); }
 .service-card p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+/* reveal-on-hover "Request a Quote" button inside each service card */
+.card-cta {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  font-family: var(--font-body); font-weight: 600; font-size: .9rem; color: #17161A;
+  padding: 9px 16px; border-radius: 10px;
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.4) inset, 0 2px 0 var(--gold-deep), 0 6px 14px rgba(0,0,0,.5);
+  opacity: 0; transform: translateY(10px); pointer-events: none;
+  transition: opacity .28s ease, transform .28s var(--ease), box-shadow .16s ease, filter .16s ease;
+}
+.card-cta svg { width: 16px; height: 16px; }
+.card-cta:hover { filter: brightness(1.05); }
+.card-cta:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--gold-deep), 0 2px 6px rgba(0,0,0,.5); }
+.service-card:hover .card-cta,
+.service-card:focus-within .card-cta { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.card-cta:focus-visible { opacity: 1; transform: translateY(0); pointer-events: auto; outline: 3px solid rgba(228,199,126,.6); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .card-cta { transition: opacity .2s ease; transform: none; } }
+/* touch/no-hover devices: always show the button so it's reachable */
+@media (hover: none) {
+  .card-cta { opacity: 1; transform: none; pointer-events: auto; }
+}
 
 .service-card--cta {
   background: linear-gradient(160deg, var(--surface-2), var(--surface));
