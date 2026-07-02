@@ -402,8 +402,8 @@ img, svg { max-width: 100%; }
 .quote-intro { position: sticky; top: 120px; }
 .quote-intro p { color: var(--muted); }
 .quote-points { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 14px; }
-.quote-points li { display: flex; align-items: center; gap: 12px; font-weight: 500; color: var(--stone-100); }
-.quote-points a { color: var(--stone-100); }
+.quote-points li { display: flex; align-items: center; gap: 12px; font-weight: 500; color: var(--stone-100); min-width: 0; }
+.quote-points a { color: var(--stone-100); overflow-wrap: anywhere; }
 .quote-points a:hover { color: var(--gold-bright); }
 .quote-points svg { width: 22px; height: 22px; color: var(--gold); flex: none; }
 
@@ -477,7 +477,7 @@ img, svg { max-width: 100%; }
 
 @media (max-width: 860px) {
   .nav-links, .nav-actions { display: none; }
-  .nav-toggle { display: inline-flex; }
+  .nav-toggle { display: inline-flex; margin-left: auto; }
   .section { padding: 72px 0; }
 }
 
